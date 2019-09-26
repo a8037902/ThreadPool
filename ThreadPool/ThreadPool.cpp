@@ -7,16 +7,6 @@
 ThreadPool::ThreadPool()
 {
 	isExit = false;
-	/*DWORD dwThreadId[MAX_THREADS];
-	HANDLE hThread[MAX_THREADS];
-	for (int i = 0; i < MAX_THREADS; ++i) {
-		hThread[i] = CreateThread(0, 64, ThreadProc, this, STACK_SIZE_PARAM_IS_A_RESERVATION, &dwThreadId[i]);
-		if (0 == hThread[i]) {
-			DWORD e = GetLastError();
-			printf("%d\r\n", e);
-			break;
-		}
-	}*/
 }
 
 
