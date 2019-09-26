@@ -1,4 +1,5 @@
-ThreadPool/.vs/
+.vs/
+x64/
 ThreadPool/x64/
 ThreadPool/Debug/
 ThreadPool/Release/

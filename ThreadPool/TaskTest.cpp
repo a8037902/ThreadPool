@@ -1,8 +1,10 @@
 #include "TaskTest.h"
 
 
-TaskTest::TaskTest()
+TaskTest::TaskTest(unsigned int times):TaskBase()
 {
+	id = cnt;
+	this->times = times;
 }
 
 
@@ -10,7 +12,13 @@ TaskTest::~TaskTest()
 {
 }
 
-void TaskTest::run()
+bool TaskTest::run()
 {
-	printf("%d\r\n", GetCurrentThreadId());
+	printf("id=%d,cnt=%d,%d\r\n", id,cnt,GetCurrentThreadId());
+	Sleep(1000);
+	if (this->times) {
+		if (--this->times)return true;
+		else return false;
+	}
+	return true;
 }

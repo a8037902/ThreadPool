@@ -5,6 +5,10 @@ public:
 	TaskBase();
 	virtual ~TaskBase();
 
-	virtual void run()=0;
+	virtual bool run()=0;
+
+	static unsigned int cnt;
 };
+
+
 

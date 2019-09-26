@@ -9,19 +9,18 @@
 
 int main()
 {
-	
 	std::shared_ptr<ThreadPool> pool(new ThreadPool());
-	pool->addTask(new TaskTest());
-	pool->addTask(new TaskTest());
-	pool->addTask(new TaskTest());
-	pool->addTask(new TaskTest());
-	pool->addTask(new TaskTest());
-	pool->run(1);
 
-	while (1) {
-		Sleep(1000);
+	for (int i = 0; i < 5; i++) {
+		pool->addTask(std::shared_ptr<TaskBase>(new TaskTest(20)));
 	}
+	pool->run(5);
 
+	/*while (1) {
+		Sleep(1000);
+	}*/
+	Sleep(10000);
+	pool->stop();
 	return 0;
 }
 

@@ -8,9 +8,13 @@ class TaskTest :
 	public TaskBase
 {
 public:
-	TaskTest();
+	TaskTest(unsigned int times=0);
 	virtual ~TaskTest();
 
-	virtual void run();
+	virtual bool run();
+
+	unsigned int id;
+	unsigned int times;
 };
+
 

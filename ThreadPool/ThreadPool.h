@@ -14,18 +14,30 @@ class ThreadPool
 	{
 		DWORD dwThreadId;
 		HANDLE hThread;
+		HANDLE hExitEvent;
+	};
+
+	struct ThreadParam
+	{
+		HANDLE hExitEvent;
+		ThreadPool *pPool;
 	};
 public:
 	ThreadPool();
 	virtual ~ThreadPool();
 
 	void run(int);
-	void addTask(TaskBase*);
+	void stop();
+	void addTask(std::shared_ptr<TaskBase>);
+	std::shared_ptr<TaskBase> popTask();
 
 private:
 	static DWORD WINAPI ThreadProc(LPVOID lpParam);
 
 	std::vector<ThreadData> vecThreadData;
-	std::queue<TaskBase*> queTask;
+	std::queue<std::shared_ptr<TaskBase>> queTask;
+
+	std::mutex mutex;
+	bool isExit;
 };
 
